@@ -1,0 +1,95 @@
+/* Сброс стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff; /* Чёрный фон */
+    color: #fff; /* Белый текст */
+  }
+  
+  .login-container {
+    width: 800px;
+    height: 500px;
+    padding: 20px;
+    background-color: #111; /* Тёмно-серый блок */
+    border: 1px solid #fff;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 10px 7px 5px rgb(130, 129, 129)
+  }
+  
+  h1 {
+    margin: 70px 0 30px 0;
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  input {
+    width: 500px;
+    height: 50px;
+    padding: 10px;
+    margin: 10px 127px 5px 127px;
+    border: 1px solid #fff;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 4px;
+  }
+  
+  input::placeholder {
+    color: #666;
+  }
+  
+  .button-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    gap: 30px;
+    margin: 20px 127px 0px 127px;
+  }
+  
+  .button {
+    width: 300px;
+    background-color: white;
+    color: #000000;
+    border: 1px solid #ffffff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+  }
+  
+  .button:hover {
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
+  }
+  
+  .forgot-password {
+    display: block;
+    margin: 20px 0;
+    font-size: 14px;
+    color: #888;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  .forgot-password:hover {
+    color: #fff;
+  }
+  .line {
+    width: 600px;
+    height: 2px;
+    background-color: #ffffff;
+    margin-left: 80px;
+    margin-bottom: 20px;
+  }
