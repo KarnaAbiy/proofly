@@ -1,0 +1,126 @@
+/* Общий стиль для страницы */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Секция 1: Профиль */
+.profile-section {
+    background-color: #fff;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    border:solid 2px #000;
+    height: 350px;
+}
+
+.profile-image {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    background-color: #000;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.profile-info {
+    margin-bottom: 20px;
+}
+
+.profile-info h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.profile-info p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.edit-button {
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border: solid 1px black;
+}
+
+/* Секция 2: Лист статусов */
+.status-section {
+    background-color: #fff;
+    padding: 30px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.status-section h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #000000;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.status-list {
+    width: 900px;
+    margin: 0 auto;
+    border-radius: 12px;
+    background-color: #000;
+
+}
+
+.status-item {
+    display: flex;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.status-item span {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.status-number {
+    font-weight: bold;
+}
+
+.status {
+    font-weight: bold;
+    margin-left: 300px;
+}
+
+.status-date {
+    margin-left: 300px;
+}
+
+#mStat .status{
+    margin-left: 347px;
+}
+
+.status-list .line{
+    width: 900px;
+    margin-left: 0px;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
