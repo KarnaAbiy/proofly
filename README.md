@@ -24,7 +24,7 @@ Upload page:
 
 Если у вас есть предложения или баги — открывайте Issue или пишите мне:
 
-- Telegram: (https://t.me/KarnAbiy)
+- Telegram: [@karnAbiy](https://t.me/KarnAbiy)
 - Email: abiy3699@gmail.com
 
 
