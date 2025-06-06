@@ -1,0 +1,351 @@
+/* Сброс стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Общие стили для страницы */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #000;
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+    display: block; /* Чтобы ссылки занимали всю ширину блока */
+    text-align: center; /* Центрируем текст в блоках */
+    width: 550px; /* Фиксированная ширина */
+    height: 80px;
+    line-height: 100px; /* Центрируем текст по вертикали */
+    transition: background-color 0.3s, color 0.3s; /* Плавное изменение фона и цвета */
+  }
+  
+  /* Верхняя чёрная панель */
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+    height: 80px;
+    
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Ссылки в верхней панели */
+  .nav-links {
+    display: flex;
+    width: 400px;
+    height: 100%;
+    margin: 0;
+  }
+  
+ .nav-links a {
+    font-size: 18px;
+    color: #fff;
+    background-color: #000;
+    width: 150px;
+    margin:  0;
+    height: 100%; /* занимает всю высоту родителя */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .nav-links a:hover {
+    background-color: #fff;
+    color: #000;
+    
+  }
+
+  .menu-icon img{
+    width: 80px;
+    height: 80px;
+  }
+
+
+  .main-content {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .slogan{
+    display: flex;
+    justify-content: center;
+  }
+
+  .slogan h1 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .slogan p {
+    font-size: 18px;
+    color: #333;
+  }
+
+  .logo-description {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 200px;
+  }
+  
+  .logo {
+    display: flex;
+    width: 80px;
+    height: 80px;
+    padding-bottom: 10px;
+  }
+  
+  .description {
+    max-width: 600px;
+  }
+  
+  .description p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
+  }
+
+  .upld_btn{
+    display: flex;
+    width: 300px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #464646;
+    color: #ffffff;
+  }
+  
+  .text-diagram {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 150px 80px 150px;
+  }
+  
+  .text {
+    width: 45%;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .diagram {
+    width: 45%;
+  }
+  
+  .diagram .black-square {
+    width: 600px;
+    height: 42  0px;
+    background-color: #000;
+  }
+  
+  .menu-icon .whiteMenuIcon{
+    width: 50px;
+    height: 50px;
+  }
+
+  .description h2{
+    margin-bottom: 15px;
+  }
+  
+  .text-diagram h2{
+    margin-bottom: 15px;
+  }
+
+  /* Футер */
+footer {
+  display: block;
+  background-color: #111; /* Фон футера */
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.3s;
+  width: 150px;
+  margin-top: 40px;
+}
+
+.footer-links .prooflY{
+  color: #fff;
+  text-decoration: none;
+  font-size: 25px;
+  transition: color 0.3s;
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+.footer-links a:hover {
+  color: #aaa;
+}
+
+.footer-bottom p {
+  font-size: 12px;
+  color: #bbb;
+  padding-bottom: 30px;
+}
+
+.line {
+  display: block;
+  justify-content: center;
+  width: 1200px;
+  height: 2px;
+  background-color: #ffffff;
+  margin-left: 150px;
+  margin-bottom: 40px;
+}
+
+.footer-logos {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Расстояние между логотипами */
+  margin-bottom: 30px; /* Отступ между логотипами и нижним текстом */
+}
+
+.footer-logos img {
+  width: 30px; /* Исходная ширина логотипа */
+  height: 30px; /* Исходная высота логотипа */
+  transition: transform 0.3s; /* Плавное увеличение размера */
+  cursor: pointer; /* Указатель мыши при наведении */
+}
+
+.footer-logos img:hover {
+  transform: scale(1.6); /* Увеличение до 120% при наведении */
+}
+
+/* Адаптивность для планшетов и телефонов */
+@media (max-width: 1024px) {
+  .text-diagram {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px 60px 20px;
+  }
+
+  .text, .diagram {
+    width: 100%;
+  }
+
+  .diagram .black-square {
+    width: 100%;
+    height: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 100%; /* или auto, чтобы подстроиться */
+    margin: 0;
+  }
+
+  .nav-links a {
+    width: auto;
+    padding: 10px 15px; /* паддинги добавляют высоту */
+    margin: 0;
+    height: 100%;       /* высота по содержимому */
+    font-size: 16px;
+    line-height: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .upld_btn {
+    width: 150px;
+    max-width: 300px;
+  }
+  .upld_btn :hover{
+    background-color: #ffffff;
+    color: #000;
+  }
+
+  .line {
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .footer-links a,
+  .footer-links .prooflY {
+    width: auto;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .top-bar {
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+
+  .logo-description {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+  }
+
+  .footer-logos {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .slogan h1 {
+    font-size: 1.5rem;
+    padding: 0 10px;
+  }
+
+  .description h2, .text-diagram h2 {
+    font-size: 1.2rem;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+
+  .description p {
+    font-size: 14px;
+  }
+
+  .footer-bottom p {
+    font-size: 10px;
+  }
+}
