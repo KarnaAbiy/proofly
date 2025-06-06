@@ -12,6 +12,7 @@ const bot = new TelegramBot(token, { polling: true });
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.static('front')); 
 
 const UPLOAD_DIR = path.join(__dirname, 'uploads');
 if (!fs.existsSync(UPLOAD_DIR)) {
