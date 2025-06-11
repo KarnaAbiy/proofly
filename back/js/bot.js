@@ -19,6 +19,7 @@ app.use(express.json());
 const FRONT_DIR = path.join(__dirname, '../../public');
 const UPLOAD_DIR = path.join(__dirname, '../uploads');
 
+
 app.use(express.static(FRONT_DIR));
 app.use('/uploads', express.static(UPLOAD_DIR));
 
@@ -31,7 +32,7 @@ app.get('/upload', (req, res) => {
   res.sendFile(path.join(FRONT_DIR, 'upload.html'));
 });
 
-app.get('/', (req, res) => {
+app.get('/index', (req, res) => {
   res.sendFile(path.join(FRONT_DIR, 'index.html'));
 });
 
