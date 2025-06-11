@@ -31,7 +31,7 @@ app.get('/upload', (req, res) => {
   res.sendFile(path.join(FRONT_DIR, 'upload.html'));
 });
 
-app.get('/', (req, res) => {
+app.get('/index', (req, res) => {
   res.sendFile(path.join(FRONT_DIR, 'index.html'));
 });
 
