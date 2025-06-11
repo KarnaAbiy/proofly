@@ -5,10 +5,9 @@ const dragDropBox = document.getElementById("dragDropBox");
 const complaintForm = document.getElementById("complaintForm");
 
 const BOT_TOKEN = "7219817475:AAG8BBGKjMREmWX6R1v5kl94AYE1yP9vQ0M";
-const CHAT_IDS = ["1002343266"]; 
+const CHAT_IDS = ["1002343266"];
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
-
 const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'video/mp4', 'video/quicktime'];
 
 function showAlert(message, isSuccess = false) {
@@ -83,7 +82,6 @@ function updateFileList(files) {
 
 async function sendToTelegram(text, files = []) {
   try {
-
     const textPromises = CHAT_IDS.map(chat_id =>
       fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
         method: "POST",
@@ -97,14 +95,6 @@ async function sendToTelegram(text, files = []) {
     );
     await Promise.all(textPromises);
 
-    const formData = new FormData();
-    formData.append('file', file);
-
-    fetch('https://proofly.onrender.com/upload', {
-      method: 'POST',
-      body: formData,
-    });
-
     if (files.length > 0) {
       for (const file of files) {
         if (!validateFile(file)) continue;
@@ -112,7 +102,7 @@ async function sendToTelegram(text, files = []) {
         for (const chat_id of CHAT_IDS) {
           const formData = new FormData();
           formData.append("chat_id", chat_id);
-          
+
           const mime = file.type;
 
           if (mime === "image/jpeg" || mime === "image/png") {
@@ -128,7 +118,6 @@ async function sendToTelegram(text, files = []) {
               body: formData
             });
           } else {
-
             formData.append("document", file);
             await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, {
               method: "POST",
@@ -194,21 +183,16 @@ ${location || "Не указано"}
   `;
 
   try {
-
     await sendToTelegram(messageText, files);
-
-    const formData = new FormData();
-    formData.append("category", department);
-    formData.append("description", description);
-    formData.append("location", location);
-
-    for (const file of files) {
-      formData.append("mediaUpload", file);
-    }
 
     const response = await fetch("/complaints", {
       method: "POST",
-      body: formData,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        category: department,
+        description: description,
+        location: location,
+      }),
     });
 
     const result = await response.json();
@@ -225,6 +209,7 @@ ${location || "Не указано"}
   }
 });
 
+// стили
 const style = document.createElement("style");
 style.textContent = `
   .alert {
@@ -239,19 +224,9 @@ style.textContent = `
     opacity: 1;
     transition: opacity 0.5s;
   }
-  
-  .alert.success {
-    background-color: #4CAF50;
-  }
-  
-  .alert.error {
-    background-color: #F44336;
-  }
-  
-  .fade-out {
-    opacity: 0 !important;
-  }
-  
+  .alert.success { background-color: #4CAF50; }
+  .alert.error { background-color: #F44336; }
+  .fade-out { opacity: 0 !important; }
   .file-item {
     display: flex;
     justify-content: space-between;
@@ -261,23 +236,19 @@ style.textContent = `
     background: #f5f5f5;
     border-radius: 4px;
   }
-  
   .file-info {
     display: flex;
     align-items: center;
     gap: 10px;
   }
-  
   .file-name {
     display: block;
     font-weight: 500;
   }
-  
   .file-size {
     font-size: 0.8em;
     color: #666;
   }
-  
   .remove-button {
     background: none;
     border: none;
@@ -287,10 +258,10 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-/////////////////////////
-
+// фильтры текста
 const badWords = [
-  "блять", "сука", "хуй", "пизда", "ебать", "fuck", "shit", "bitch", "nigger", "faggot"
+  "блять", "сука", "хуй", "пизда", "ебать",
+  "fuck", "shit", "bitch", "nigger", "faggot"
 ];
 
 function containsBadWords(text) {
@@ -317,74 +288,3 @@ function validateDescription(text) {
   }
   return true;
 }
-
-function showAlert(message, isSuccess = false) {
-  const alertBox = document.createElement("div");
-  alertBox.className = isSuccess ? "alert success" : "alert error";
-  alertBox.textContent = message;
-
-  document.body.appendChild(alertBox);
-
-  setTimeout(() => {
-    alertBox.classList.add("fade-out");
-    setTimeout(() => alertBox.remove(), 500);
-  }, 3000);
-}
-
-function validateFile(file) {
-  if (file.size > MAX_FILE_SIZE) {
-    showAlert(`Файл ${file.name} слишком большой (макс. 5MB)`);
-    return false;
-  }
-
-  if (!ALLOWED_FILE_TYPES.includes(file.type)) {
-    showAlert(`Неподдерживаемый формат файла: ${file.name}`);
-    return false;
-  }
-
-  return true;
-}
-
-function updateFileList(files) {
-  fileList.innerHTML = "";
-  const validFiles = Array.from(files).filter(validateFile);
-
-  const dataTransfer = new DataTransfer();
-  validFiles.forEach(f => dataTransfer.items.add(f));
-  fileInput.files = dataTransfer.files;
-
-  if (validFiles.length === 0) return;
-
-  validFiles.forEach((file, index) => {
-    const listItem = document.createElement("li");
-    listItem.className = "file-item";
-
-    const fileTypeIcon = file.type.startsWith("image") ? "🖼️" :
-      file.type.startsWith("video") ? "🎥" : "📄";
-
-    const fileSize = (file.size / (1024 * 1024)).toFixed(2);
-
-    listItem.innerHTML = `
-      <div class="file-info">
-        <span class="file-icon">${fileTypeIcon}</span>
-        <div>
-          <span class="file-name">${file.name}</span>
-          <span class="file-size">${fileSize} MB</span>
-        </div>
-      </div>
-      <button class="remove-button" aria-label="Удалить файл">❌</button>
-    `;
-
-    listItem.querySelector(".remove-button").onclick = (e) => {
-      e.stopPropagation();
-      const newFiles = Array.from(fileInput.files).filter((_, i) => i !== index);
-      const newDataTransfer = new DataTransfer();
-      newFiles.forEach(f => newDataTransfer.items.add(f));
-      fileInput.files = newDataTransfer.files;
-      updateFileList(newDataTransfer.files);
-    };
-
-    fileList.appendChild(listItem);
-  });
-}
-
