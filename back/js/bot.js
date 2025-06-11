@@ -13,6 +13,8 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+app.use('/js', express.static(path.join(__dirname, '../js')));
+
 app.use(cors());
 app.use(express.json());
 
