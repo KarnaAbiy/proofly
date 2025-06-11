@@ -1,3 +1,5 @@
+alert("✅ upload.js загружен");
+
 const fileInput = document.getElementById("mediaUpload");
 const browseButton = document.getElementById("browseButton");
 const fileList = document.getElementById("fileList");
